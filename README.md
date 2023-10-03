@@ -3,7 +3,8 @@
 The python package 'DeepAnnotation' can be used to perform genomic selection (GS), which is a promising
 breeding strategy for agricultural breeding. DeepAnnotation predicts phenotypes from transcriptional regulatory functional annotations with interpretable deep learning framework. The effectiveness
 of DeepAnnotation has been demonstrated in predicting three meat quality traits (lean meat percentage at 100 kg [LMP], loin muscle depth at 100 kg [LMD], back fat thickness at 100 kg [BF]) on a population
-of 1940 Duroc boars with 11633164 SNPs (_Sus scrofa_) from [GigaDB](https://ftp.cngb.org/pub/gigadb/pub/10.5524/100001_101000/100894).
+of 1940 Duroc boars with 11633164 SNPs (_Sus scrofa_) from [GigaDB] (https://ftp.cngb.org/pub/gigadb/pub/10.5524/100001_101000/100894).
+
 <br>
 ## Version and download <br>
 * [Version 1.0](https://github.com/mawenlong2016/DeepAnnotation/archive/refs/heads/main.zip) -First version released on Oct, third, 2023<br>
