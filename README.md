@@ -1,5 +1,4 @@
 # ___DeepAnnotation: Deep neural network integrated transcriptional regulatory functional Annotation for genomic prediction with interpretable framework___ <br>
-<br>
 The python package 'DeepAnnotation' can be used to perform genomic selection (GS), which is a promising
 breeding strategy for agricultural breeding. DeepAnnotation predicts phenotypes from transcriptional regulatory functional annotations with interpretable deep learning framework. The effectiveness
 of DeepAnnotation has been demonstrated in predicting three meat quality traits (lean meat percentage at 100 kg [LMP], loin muscle depth at 100 kg [LMD], back fat thickness at 100 kg [BF]) on a population
