@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 # DeepAnnotation for phenotype prediction of candidates
-# python ./code/DeepAnnotation_predict.py --training_steps 3459  --learning_rate 0.01 --genotype ./species/Duroc/Genotype_train_example.h5 --phenotype ./species/Duroc/phenotype_train_example.txt --function ./species/Duroc/GeneFunc_example.h5 --metagene ./species/Duroc/metagene_example.h5 --codingSNP ./species/Duroc/codingSNP_flag_example.txt  --work_path ./species/Duroc/Network_example2 --architecture fnn,fnn,fnn,fnn,fnn,fnn,fnn --unit 90 --regularizer l2 --regularizer_rate 0.1 --momentum 0.95 --dropout 0.1 --bias_architecture fnn,fnn,fnn --unit_ratio 1,2,4,5,6,7 --calculate -1 --phe_flag 5 --batch_ratio 0.1 --max_gpu 0.9 --decay_steps 100 --decay_rate 0.9 --seed 1 --genotype_test ./species/Duroc/Genotype_test_example.h5 --model_dir ./species/Duroc/Network_example2/cv_1/predict/final_model
-
+# python ./code/DeepAnnotation_predict.py --training_steps 382  --learning_rate 0.1 --genotype ./species/Duroc/Genotype_train_example.h5 --phenotype ./species/Duroc/phenotype_train_example.txt --function ./species/Duroc/GeneFunc_example.h5  --metagene ./species/Duroc/metagene_example.h5 --work_path ./species/Duroc/Train --architecture fnn,fnn,fnn,fnn,fnn,fnn,fnn --unit 110 --regularizer l2 --regularizer_rate 0.01 --momentum 0.9 --dropout 0.1 --bias_architecture fnn,fnn,fnn --unit_ratio 1,2,4,5,6,7 --calculate -1 --phe_flag 5 --batch_ratio 0.1 --max_gpu 0.9 --decay_steps 100 --decay_rate 0.9 --genotype_test ./species/Duroc/Genotype_test_example.h5 --model_dir ./species/Duroc/Train/final_model
 
 # import packages
 import tensorflow as tf
@@ -16,6 +15,7 @@ import numpy as np
 from sklearn.model_selection import KFold
 from sklearn.model_selection import train_test_split
 import datetime
+import fwr13y.d9m.tensorflow.enable_determinism as tf_determinism
 
 # define main function
 # Run main() function when called directly
@@ -26,7 +26,12 @@ class DeepAnnotation(object):
     def __init__(self, function, metagene, X_train, y_train,  X_test,
                  codingSNP, batch_size, decay_steps, decay_rate,training_steps,
                  learning_rate, architecture, unit, unit_ratio, regularizer, regularizer_rate, 
-                 momentum, dropout, bias_architecture):
+                 momentum, dropout, bias_architecture, seed):
+        os.environ['PYTHONHASHSEED'] = str(seed)
+        np.random.seed(seed)
+        tf.random.set_seed(seed)
+        tf.compat.v1.set_random_seed(seed)
+        tf_determinism()        
         self.function = tf.convert_to_tensor(function)
         self.metagene = tf.convert_to_tensor(metagene)
         self.X_train = X_train
@@ -385,9 +390,9 @@ def loadData_DeepAnnotation():
                                      "metagene annotation file")
     tf.compat.v1.flags.DEFINE_string("phenotype", "./data/phenotype/phenotype_train.txt",
                                      "phenotype file")
-    tf.compat.v1.flags.DEFINE_string("codingSNP", "./data/variant/codingSNP_flag.txt", "coding SNP flag")
+    tf.compat.v1.flags.DEFINE_integer("codingSNP", 65706, "the position denotes the end of coding SNP")
+    tf.compat.v1.flags.DEFINE_string("seed", "10", "set the global seed for reproducible")
     tf.compat.v1.flags.DEFINE_integer("kfold", 5, "k-fold cross validation")
-    tf.compat.v1.flags.DEFINE_integer("seed", 1, "set the random seed")
     tf.compat.v1.flags.DEFINE_float("batch_ratio", 0.1, "batch size ratio of the training set")
     tf.compat.v1.flags.DEFINE_float("max_gpu", 0.9, "set maximum gpu memory")
     tf.compat.v1.flags.DEFINE_string("work_path", "./DeepAnnotation", "work directory")    
@@ -420,30 +425,25 @@ def loadData_DeepAnnotation():
     tf.compat.v1.flags.DEFINE_string("output", "pred_phenotype-restore.txt", 
                                      "the output name of phenotype prediction")
     FLAGS = tf.compat.v1.flags.FLAGS
-    bias_architecture = str.split(FLAGS.bias_architecture,",")     
-
+    bias_architecture = str.split(FLAGS.bias_architecture,",")
     f_genotye = h5py.File(FLAGS.genotype,'r')
     genotype = f_genotye['Genotype']
-
     f_genotye_test = h5py.File(FLAGS.genotype_test,'r')
     genotype_test = f_genotye_test['Genotype']
-
     if bias_architecture[1] != "none":
         f_function = h5py.File(FLAGS.function,'r')
         function = f_function['Function']
     else:
         function = np.array([[],[]])
-    
     if bias_architecture[2] != "none":
         f_metagene = h5py.File(FLAGS.metagene,'r')
         metagene = f_metagene['Network']
     else:
-        metagene = np.array([[],[]])  
-    
+        metagene = np.array([[],[]])
     phenotype = np.loadtxt(FLAGS.phenotype)
-    codingSNP = np.int_(np.loadtxt(FLAGS.codingSNP))
-    kfold = FLAGS.kfold
+    codingSNP = FLAGS.codingSNP
     seed = FLAGS.seed
+    kfold = FLAGS.kfold
     batch_ratio = FLAGS.batch_ratio
     max_gpu = FLAGS.max_gpu
     work_path = FLAGS.work_path    
@@ -465,11 +465,11 @@ def loadData_DeepAnnotation():
     if not os.path.exists(work_path):
         os.makedirs(work_path)
 
-    return genotype, function, metagene, phenotype, codingSNP, kfold, seed, batch_ratio, \
+    return genotype, function, metagene, phenotype, codingSNP, kfold, batch_ratio, \
            max_gpu, work_path, decay_steps, decay_rate, training_steps, \
            learning_rate, architecture, unit, unit_ratio, regularizer, regularizer_rate, \
            momentum, dropout, bias_architecture, calculate, \
-           genotype_test, phe_flag, model_dir, output
+           genotype_test, phe_flag, model_dir, output, seed
 
 
 # define the main() function
@@ -477,12 +477,16 @@ def loadData_DeepAnnotation():
 def main():
     start1=datetime.datetime.now()
     #Define DeepAnnotation deepannotation parameters and options in dictionary of flags
-    genotype, function, metagene, phenotype, codingSNP, kfold, seed, batch_ratio, \
+    genotype, function, metagene, phenotype, codingSNP, kfold, batch_ratio, \
     max_gpu, work_path, decay_steps, decay_rate, training_steps, \
     learning_rate, architecture, unit, unit_ratio, regularizer, regularizer_rate, \
     momentum, dropout, bias_architecture, calculate, \
-    X_test, phe_flag, model_dir, output \
+    X_test, phe_flag, model_dir, output, seed \
     = loadData_DeepAnnotation()
+    if seed == "random":
+        seed = np.random.randint(0,1000000,1)[0]
+    else:
+        seed = np.int_(seed)
     os.environ['CUDA_VISIBLE_DEVICES'] = calculate
     pred_phenotype = np.zeros((X_test.shape[0],1)) 
     batch_size = int(len(genotype) * batch_ratio) + 1
@@ -491,7 +495,7 @@ def main():
                     np.array(X_test), 
                     codingSNP, batch_size, decay_steps, decay_rate,training_steps,
                     learning_rate, architecture, unit, unit_ratio, regularizer, regularizer_rate,
-                     momentum, dropout, bias_architecture)  
+                     momentum, dropout, bias_architecture, seed)  
 
     gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=max_gpu, allow_growth=True)
     config = tf.compat.v1.ConfigProto(gpu_options=gpu_options, allow_soft_placement=True)
@@ -509,7 +513,3 @@ def main():
     
 if __name__ == '__main__':
     main()
-
-
-
-
