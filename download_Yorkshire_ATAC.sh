@@ -1,0 +1,16 @@
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Adipose_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Adipose_P350_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Cerebellum_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Cerebellum_P350_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Cortex_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Cortex_P350_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Hypothalamus_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Hypothalamus_P350_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Liver_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Liver_P350_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Lung_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Lung_P350_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Muscle_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Muscle_P350_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Spleen_P348_Peaks.bed
+wget -c http://farm.cse.ucdavis.edu/%7Eckern/Nature_Communications_2020/Peak_Calls/Pig/ATAC_Spleen_P350_Peaks.bed
