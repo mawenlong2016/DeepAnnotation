@@ -3,7 +3,7 @@
 The python package 'DeepAnnotation' can be used to perform genomic selection (GS), which is a promising
 breeding strategy for agricultural breeding. DeepAnnotation predicts phenotypes from comprehensive multi-omics functional annotations with interpretable deep learning framework. The effectiveness
 of DeepAnnotation has been demonstrated in predicting three pork production traits (lean meat percentage at 100 kg [LMP], loin muscle depth at 100 kg [LMD], back fat thickness at 100 kg [BF]) on a population
-of 1940 Duroc boars with 11633164 SNPs (_Sus scrofa_) from [**GigaDB**](https://ftp.cngb.org/pub/gigadb/pub/10.5524/100001_101000/100894). The comprehensive functional annotation data and data used for training DeepAnnotation are available at [**Zenodo**](https://zenodo.org/records/14586911).
+of 1940 Duroc boars with 11633164 SNPs (_Sus scrofa_) from [**GigaDB**](https://doi.org/10.5524/100894)). The comprehensive functional annotation data and data used for training DeepAnnotation are available at [**Zenodo**](https://zenodo.org/records/14586911).
 <br>
 ## Version and download <br>
 * [Version 1.0](https://github.com/mawenlong2016/DeepAnnotation/archive/refs/heads/main.zip) -First version released on Jan, second, 2024<br>
@@ -12,6 +12,8 @@ DeepAnnotation denpends on the following software environments：<br>
 1. [Python](https://www.python.org) - The python (version >=3.6) is needed. <br>
 2. We suggest [conda](https://docs.conda.io/projects/miniconda/en/latest/) or [docker](https://www.docker.com/) to install the required packages. <br>
 3. We suggest [git](https://docs.github.com/) or [wget](https://www.gnu.org/software/wget/) to access the DeepAnnotation source files. <br>
+## Data accession
+The full datasets for training and testing DeepAnnotation are available at [**Zenodo**](https://zenodo.org/records/14586911). Specifically, we provide an example dataset (compressed file [**DeepAnnotation-main.zip**](https://zenodo.org/records/14586911/files/DeepAnnotation-main.zip?download=1) at **Zenodo repository**) to learn how to use DeepAnnotation, which is exemplified in the following **DeepAnnotation exemplified usage** section. Moreover, we also provide the example dataset and package the environment at [**DockerHub**](https://hub.docker.com/r/wenlong2023/deepannotation), which could be accessed following the instruction at **Installed by docker** section.
 ## DeepAnnotation Quick Installation
 ### Installed by personal computer
 1. Build DeepAnnotation environment by conda
@@ -31,12 +33,18 @@ $ wget https://github.com/mawenlong2016/DeepAnnotation/archive/refs/heads/main.z
 $ unzip main.zip
 $ mv DeepAnnotation-main DeepAnnotation
 ```
-3. Prepare your files with the same format that we have prepared in the examples of Duroc (./DeepAnnotation/species/Duroc)
+3. Prepare your files with the same format that we have prepared in the examples of Duroc (./DeepAnnotation/species/Duroc), which is available at **Data accession** section.
 ```bash
-# Due to the size limitation of github webline
+# The example dataset could be accessed via:
+$ wget -c https://zenodo.org/records/14586911/files/DeepAnnotation-main.zip?download=1
+# unzip the compressed file
+$ unzip DeepAnnotation-main.zip
 # The Genotype_train_example.h5 was split into a couple of files with less than 25MB
 # Therefore, we should combine these slices before we run DeepAnnotation example
-$ cat ./DeepAnnotation/species/Duroc/Genotype_train_example_slice* > ./DeepAnnotation/species/Duroc/Genotype_train_example.h5
+$ cat ./DeepAnnotation-main/species/Duroc/Genotype_train_example_slice* > ./DeepAnnotation-main/species/Duroc/Genotype_train_example.h5
+# Create a new folder under the DeepAnnotation directory and copy the example dataset
+$ mkdir -p ./DeepAnnotation/species/Duroc
+$ cp -r ./DeepAnnotation-main/species/Duroc/  ./DeepAnnotation/species/Duroc
 ```
 4. activate DeepAnnotation conda environment and enter the DeepAnnotation directory
 ```bash
