@@ -259,3 +259,6 @@ Please use [DeepAnnotation/issues](https://github.com/mawenlong2016/DeepAnnotati
 We downloaded the publicly available epigenome data from the work of [**Kern et al. (2021)**](https://doi.org/10.1038/s41467-021-22100-8). These files have been deposited in the Gene Expression Omnibus (GEO) and are available under accession [**GSE158414**]( https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158414). We downloaded these files at 13 May 2024 via the following two scripts:<br>
 **download_conserved_Yorkshire.sh** - we used this file to download the **conserved regulatory elements of pig**.
 **download_Yorkshire_ATAC.sh** - we used this file to download the **ATAC-Seq data of pig**.
+
+## Comprehensive functional annotation
+We used RNAfold, DeepSEA and easyMF approaches to build the the comprehensive functional annotation. The workflow for building those annotaions could be accessed via: **Script_for_building_the_comprehensive_functional_annotations.sh**
