@@ -261,4 +261,4 @@ We downloaded the publicly available epigenome data from the work of [**Kern et 
 **download_Yorkshire_ATAC.sh** - we used this file to download the **ATAC-Seq data of pig**.
 
 ## Comprehensive functional annotation
-We used RNAfold, DeepSEA and easyMF approaches to build the the comprehensive functional annotation. The workflow for building those annotaions could be accessed via: **Script_for_building_the_comprehensive_functional_annotations.sh**
+We used RNAfold, DeepSEA and easyMF approaches to build the the comprehensive functional annotation. The workflow for building those annotaions could be accessed via: **code_annotations/Script_for_building_the_comprehensive_functional_annotations.sh** 
