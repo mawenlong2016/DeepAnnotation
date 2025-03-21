@@ -36,7 +36,7 @@ $ mv DeepAnnotation-main DeepAnnotation
 3. Prepare your files with the same format that we have prepared in the examples of Duroc (./DeepAnnotation/species/Duroc), which is available at **Data accession** section.
 ```bash
 # The example dataset could be accessed via:
-$ wget -c https://zenodo.org/records/14586911/files/DeepAnnotation-main.zip?download=1
+$ wget -c https://zenodo.org/records/15055481/files/DeepAnnotation-main.zip?download=1
 # unzip the compressed file
 $ unzip DeepAnnotation-main.zip
 # The Genotype_train_example.h5 was split into a couple of files with less than 25MB
