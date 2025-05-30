@@ -769,7 +769,7 @@ pdf("./figure_plot/LMP_Figure6B_heri_real.pdf",height=16, width=12)
 barplot(heri_real_result_plot, col = col_break)
 dev.off()
 # ----------------------------------------------- 
-# Figure 6C, Genomic prediction accuracy (measure by Pearson correlation coefficient, PCC) calculated using rrBLUP model for different SNP sets: I) 11,084 potential causal variants identified by DeepAnnotation (including 10,041 non-coding or cis-regulatory variants and 1,043 coding or RNA secondary structure-related variants with P-value < 0.01 from the backtracking strategy). II) 644,964 SNPs located within 1Mb of the 11,084 DeepAnnotation predicted causal variants. III) 4,850 SNPs with GWAS P-value < 1.0e-6. IV) 11,083 SNPs with GWAS P-value < 1.0e-5. V) 24,833 SNPs with GWAS P-value < 1.0e-4. VI) Ten sets of 11,084 SNPs randomly selected across the genome (mean PCC reported).
+# Figure 6C, Genomic prediction accuracy (measured by Pearson correlation coefficient, PCC) calculated using rrBLUP model for different SNP sets: I) 11,084 potential causal variants identified by DeepAnnotation (including 10,041 non-coding or cis-regulatory variants and 1,043 coding or RNA secondary structure-related variants with P-value < 0.01 from the backtracking strategy). II) 644,964 SNPs located within 1Mb of the 11,084 DeepAnnotation predicted causal variants. III) 4,850 SNPs with GWAS P-value < 1.0e-6. IV) 11,083 SNPs with GWAS P-value < 1.0e-5. V) 24,833 SNPs with GWAS P-value < 1.0e-4. VI) Ten sets of 11,084 SNPs randomly selected across the genome (mean PCC reported).
 PCC_result <- t(t(cor(pred_phenotype[test_sample,])[1,]))
 PCC_result_plot <- c("SNP_random"=mean(PCC_result[2:11,1]),(PCC_result[12:16,1]))
 pdf("./figure_plot/LMP_Figure6C_PCC_plot.pdf",height=16, width=12)
