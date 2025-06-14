@@ -3,7 +3,7 @@
 The python package 'DeepAnnotation' can be used to perform genomic selection (GS), which is a promising
 breeding strategy for agricultural breeding. DeepAnnotation predicts phenotypes from comprehensive multi-omics functional annotations with interpretable deep learning framework. The effectiveness
 of DeepAnnotation has been demonstrated in predicting three pork production traits (lean meat percentage at 100 kg [LMP], loin muscle depth at 100 kg [LMD], back fat thickness at 100 kg [BF]) on a population
-of 1940 Duroc boars with 11633164 SNPs (_Sus scrofa_) from [**GigaDB**](https://doi.org/10.5524/100894)). The comprehensive functional annotation data and data used for training DeepAnnotation are available at [**Zenodo**](https://zenodo.org/records/15055481).
+of 1940 Duroc boars with 11633164 SNPs (_Sus scrofa_) from [**GigaDB**](https://doi.org/10.5524/100894)). The comprehensive functional annotation data and data used for training DeepAnnotation are available at [**Zenodo**](https://zenodo.org/records/15661212).
 <br>
 ## Version and download <br>
 * [Version 1.0](https://github.com/mawenlong2016/DeepAnnotation/archive/refs/heads/main.zip) -First version released on Jan, second, 2024<br>
@@ -13,7 +13,7 @@ DeepAnnotation denpends on the following software environments：<br>
 2. We suggest [conda](https://docs.conda.io/projects/miniconda/en/latest/) or [docker](https://www.docker.com/) to install the required packages. <br>
 3. We suggest [git](https://docs.github.com/) or [wget](https://www.gnu.org/software/wget/) to access the DeepAnnotation source files. <br>
 ## Data accession
-The full datasets for training and testing DeepAnnotation are available at [**Zenodo**](https://zenodo.org/records/15055481). Specifically, we provide an example dataset (compressed file [**DeepAnnotation-main.zip**](https://zenodo.org/records/15055481/files/DeepAnnotation-main.zip?download=1) at **Zenodo repository**) to learn how to use DeepAnnotation, which is exemplified in the following **DeepAnnotation exemplified usage** section. Moreover, we also provide the example dataset and package the environment at [**DockerHub**](https://hub.docker.com/r/wenlong2023/deepannotation), which could be accessed following the instruction at **Installed by docker** section.
+The full datasets for training and testing DeepAnnotation are available at [**Zenodo**](https://zenodo.org/records/15661212). Specifically, we provide an example dataset (compressed file [**DeepAnnotation-main.zip**](https://zenodo.org/records/15661212/files/DeepAnnotation-main.zip?download=1) at **Zenodo repository**) to learn how to use DeepAnnotation, which is exemplified in the following **DeepAnnotation exemplified usage** section. Moreover, we also provide the example dataset and package the environment at [**DockerHub**](https://hub.docker.com/r/wenlong2023/deepannotation), which could be accessed following the instruction at **Installed by docker** section.
 ## DeepAnnotation Quick Installation
 ### Installed by personal computer
 1. Build DeepAnnotation environment by conda
@@ -36,7 +36,7 @@ $ mv DeepAnnotation-main DeepAnnotation
 3. Prepare your files with the same format that we have prepared in the examples of Duroc (./DeepAnnotation/species/Duroc), which is available at **Data accession** section.
 ```bash
 # The example dataset could be accessed via:
-$ wget -c https://zenodo.org/records/15055481/files/DeepAnnotation-main.zip?download=1
+$ wget -c https://zenodo.org/records/15661212/files/DeepAnnotation-main.zip?download=1
 # unzip the compressed file
 $ unzip DeepAnnotation-main.zip
 # The Genotype_train_example.h5 was split into a couple of files with less than 25MB
@@ -254,11 +254,17 @@ $ python ./code/DeepAnnotation_predict.py \
 ```
 ## Ask questions
 Please use [DeepAnnotation/issues](https://github.com/mawenlong2016/DeepAnnotation/issues) for how to use DeepAnnotation and reporting bugs.
-
+## Maintainer
+Wenlong Ma [mawnelong_nwsuaf@163.com](mawnelong_nwsuaf@163.com) is the maintainer for long-term maintenance  of DeepAnnotation. 
 ## Additional files
 We downloaded the publicly available epigenome data from the work of [**Kern et al. (2021)**](https://doi.org/10.1038/s41467-021-22100-8). These files have been deposited in the Gene Expression Omnibus (GEO) and are available under accession [**GSE158414**]( https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158414). We downloaded these files at 13 May 2024 via the following two scripts:<br>
 **download_conserved_Yorkshire.sh** - we used this file to download the **conserved regulatory elements of pig**.
 **download_Yorkshire_ATAC.sh** - we used this file to download the **ATAC-Seq data of pig**.
 
 ## Comprehensive functional annotation
-We used RNAfold, DeepSEA and easyMF approaches to build the the comprehensive functional annotation. The workflow for building those annotaions could be accessed via: **code_annotations/Script_for_building_the_comprehensive_functional_annotations.sh** 
+We provide the workflow for building the comprehensive functional annotation using RNAfold, DeepSEA and easyMF approaches (compressed file [**code_annotations.zip**](https://zenodo.org/records/15661212/files/code_annotations.zip?download=1) at **Zenodo repository**). The file **code_annotations/Script_for_building_the_comprehensive_functional_annotations.sh** (just unzip the **code_annotations.zip** after download) denoted all the steps.
+```
+$ wget https://zenodo.org/records/15661212/files/code_annotations.zip?download=1 
+$ unzip code_annotations.zip
+# file code_annotations/Script_for_building_the_comprehensive_functional_annotations.sh denoted all the steps
+```
