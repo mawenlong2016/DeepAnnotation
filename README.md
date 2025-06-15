@@ -254,13 +254,14 @@ $ python ./code/DeepAnnotation_predict.py \
 ```
 ## Ask questions
 Please use [DeepAnnotation/issues](https://github.com/mawenlong2016/DeepAnnotation/issues) for how to use DeepAnnotation and reporting bugs.
+
 ## Maintainer
 Wenlong Ma [mawnelong_nwsuaf@163.com](mawnelong_nwsuaf@163.com) is the maintainer for long-term maintenance  of DeepAnnotation. 
+
 ## Additional files
-We downloaded the publicly available epigenome data from the work of [**Kern et al. (2021)**](https://doi.org/10.1038/s41467-021-22100-8). These files have been deposited in the Gene Expression Omnibus (GEO) and are available under accession [**GSE158414**]( https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158414). We downloaded these files at 13 May 2024 via the following two scripts:<br>
+We downloaded the publicly available epigenome data from the work of [**Kern et al. (2021)**](https://doi.org/10.1038/s41467-021-22100-8). These files have been deposited in the Gene Expression Omnibus (GEO) and are available under accession [**GSE158414**]( https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE158414). The [**conserved regulatory elements of pig**](https://zenodo.org/records/15661212/files/code_annotations.zip?download=1conserved_regulatory_element.zip) used for building DeepAnnotation could be accessed via **Zenodo repository**. We downloaded these files at 13 May 2024 via the following two scripts:<br>
 **download_conserved_Yorkshire.sh** - we used this file to download the **conserved regulatory elements of pig**.
 **download_Yorkshire_ATAC.sh** - we used this file to download the **ATAC-Seq data of pig**.
-
 ## Comprehensive functional annotation
 We provide the workflow for building the comprehensive functional annotation using RNAfold, DeepSEA and easyMF approaches (compressed file [**code_annotations.zip**](https://zenodo.org/records/15661212/files/code_annotations.zip?download=1) at **Zenodo repository**). The file **code_annotations/Script_for_building_the_comprehensive_functional_annotations.sh** (just unzip the **code_annotations.zip** after download) denoted all the steps.
 ```
